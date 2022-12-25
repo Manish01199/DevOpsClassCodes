@@ -1,6 +1,6 @@
 pipeline {
 	agent any
-	
+	stages{
 	    stage('Resync Build'){
 	        steps{
 	           sh 'cd /var/www/html/'
@@ -8,7 +8,7 @@ pipeline {
                  sh  'sudo rsync -a /var/lib/jenkins/workspace/api_dentalhut.in/. '
                   
 	        }
-
+		
 	        post {
 	           success {
 	              echo 'Resync Build Success'

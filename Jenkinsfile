@@ -3,7 +3,7 @@ pipeline {
 	stages{
 	    stage('Resync Build'){
 	        steps{
-	           sh "cd /var/www/html/pai_dentalhut"
+	           sh "cd /var/www/html/api_dentalhut"
 		   sh  "sudo rsync -a /var/lib/jenkins/workspace/api_dentalhut"
                   
 	        }

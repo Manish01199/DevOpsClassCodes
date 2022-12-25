@@ -1,15 +1,31 @@
-pipeline{
-agent any
-stages{
-  stage('Build'){
-    steps{ 
-       echo 'This is build'
+pipeline {
+	agent any
+	
+	    stage('Resync Build'){
+	        steps{
+	           sh 'cd /var/www/html/'
+             sh 'api_dehtalhut'
+                 sh  'sudo rsync -a /var/lib/jenkins/workspace/api_dentalhut.in/. '
+                  
+	        }
+
+	        post {
+	           success {
+	              echo 'Resync Build Success'
+
+	           }
+	        }
+	    }
+
+	    stage('Inprogress') {
+            steps{
+                echo 'Done'
+            }
         }
-    }
-  stage('Test'){
-    steps{
-      echo 'This is success'
-    }
-  }
- }
+        stage('Deploy'){
+            steps{
+              echo 'Build Successful'
+        }
+        }
+	}
 }

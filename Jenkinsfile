@@ -14,7 +14,7 @@ pipeline {
 	           }
 	        }
 	    }
-			    stage('Inprogress') {
+	    stage('Inprogress') {
             steps{
                 sh '''
                 #sudo npm i --save-dev
@@ -26,11 +26,7 @@ pipeline {
                 echo 'Done'
             }
         }
-	    stage('Inprogress') {
-            steps{
-                echo 'Done'
-            }
-        }
+	
         stage('Deploy'){
             steps{
               echo 'Build Successful'

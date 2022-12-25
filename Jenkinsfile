@@ -3,12 +3,11 @@ agent any
 stages{
   stage('Build'){
     steps{ 
-       sh 'mvn clean install -DskipTests'
+       echo 'This is build'
         }
     }
   stage('Test'){
     steps{
-      sh 'mvn test'
       echo 'This is success'
     }
   }

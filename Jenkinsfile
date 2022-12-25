@@ -4,7 +4,7 @@ pipeline {
 	    stage('Resync Build'){
 	        steps{
 	           sh 'cd /var/www/html/'
-             sh 'api_dehtalhut'
+                   sh 'mkdir api_dehtalhut'
                  sh  'sudo rsync -a /var/lib/jenkins/workspace/api_dentalhut.in/. '
                   
 	        }

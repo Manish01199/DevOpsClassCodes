@@ -4,8 +4,7 @@ pipeline {
 	    stage('Resync Build'){
 	        steps{
 	           sh "cd /var/www/html/api_dentalhut"
-		   sh  "sudo rsync -a /var/lib/jenkins/workspace/api_dentalhut"
-                  
+		                   
 	        }
 		
 	        post {
@@ -15,7 +14,18 @@ pipeline {
 	           }
 	        }
 	    }
-
+			    stage('Inprogress') {
+            steps{
+                sh '''
+                #sudo npm i --save-dev
+                sudo npm i
+                sudo chown ubuntu:ubuntu -R /var/www/html/
+                sudo pm2 stop server.js
+                sudo pm2 start server.js
+                '''
+                echo 'Done'
+            }
+        }
 	    stage('Inprogress') {
             steps{
                 echo 'Done'
